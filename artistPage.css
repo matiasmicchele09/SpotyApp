@@ -1,0 +1,23 @@
+ body {
+     background-color: #000000;
+     margin-top: 100px;
+     color: #FFFFFF;
+ }
+ 
+ .container div .artist-img img {
+     border: 5px solid #FFFFFF;
+     border-radius: 75%;
+     margin-bottom: 15px;
+ }
+ 
+ .artist-name {
+     margin-left: 30px;
+ }
+ 
+ table th {
+     color: #FFFFFF;
+ }
+ 
+ table td {
+     color: #FFFFFF;
+ }

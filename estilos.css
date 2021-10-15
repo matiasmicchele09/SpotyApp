@@ -1,0 +1,50 @@
+body {
+    background-color: #000000 !important;
+    color: #FFFFFF !important;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.contenedor {
+    background-color: #000000;
+}
+
+div .alert {
+    margin: 20px;
+    max-width: 500px;
+}
+
+.container {
+    background-color: #000000;
+}
+
+.search {
+    cursor: pointer;
+}
+
+.home {
+    cursor: pointer;
+}
+
+.card {
+    cursor: pointer;
+}
+
+.card-title,
+.card-text {
+    color: #000000;
+    margin: 10px;
+}
+
+.card {
+    max-width: 300px;
+    margin-top: 15px;
+}
+
+.card img {
+    max-width: 300px;
+    max-height: 300px;
+}
+
+.card-text {
+    color: #FFFFFF;
+}
