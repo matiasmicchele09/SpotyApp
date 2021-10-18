@@ -5,15 +5,14 @@ id = getURL.get('id');
 const btn = document.querySelector(".btn-regresar");
 const artistImage = document.querySelector(".artist-img");
 const artistName = document.querySelector(".artist-name");
-
 const tableBody = document.querySelector(".table-body");
 
 const artist = fetch(`${url}/${id}`, {
-    headers: { "Authorization": "Bearer BQB7QGxgu-ivDCtz9kvQgn0QItMtgWCYCxfAbM9S-Sx8l5Pw-fte-HEpygG8bPbAkYZ8P0h8SAq-MmrtRh0" }
+    headers: { "Authorization": "Bearer BQDQv4-6Rsj5pW7QlxMZL81AlTJNmIvfG_v1HNmLC-iV1P8AzqyNSvNADLjabqtTvx8wtKSStuThuenytvs"}
 }).then(art => art.json());
 
 const topTracks = fetch(`${url}/${id}/top-tracks?market=us`, {
-    headers: { "Authorization": "Bearer BQB7QGxgu-ivDCtz9kvQgn0QItMtgWCYCxfAbM9S-Sx8l5Pw-fte-HEpygG8bPbAkYZ8P0h8SAq-MmrtRh0" }
+    headers: { "Authorization": "Bearer BQDQv4-6Rsj5pW7QlxMZL81AlTJNmIvfG_v1HNmLC-iV1P8AzqyNSvNADLjabqtTvx8wtKSStuThuenytvs" }
 }).then(topTraks => topTraks.json());
 
 artist.then(art => {

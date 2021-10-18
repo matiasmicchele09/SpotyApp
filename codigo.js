@@ -1,5 +1,5 @@
 const newRealeses = fetch('https://api.spotify.com/v1/browse/new-releases?offset=0&limit=20', {
-    headers: { "Authorization": "Bearer BQB7QGxgu-ivDCtz9kvQgn0QItMtgWCYCxfAbM9S-Sx8l5Pw-fte-HEpygG8bPbAkYZ8P0h8SAq-MmrtRh0" }
+    headers: { "Authorization": "Bearer BQDQv4-6Rsj5pW7QlxMZL81AlTJNmIvfG_v1HNmLC-iV1P8AzqyNSvNADLjabqtTvx8wtKSStuThuenytvs" }
 }).then(res => res.json());
 
 /*const artist = fetch('https://api.spotify.com/v1/artists/');*/
