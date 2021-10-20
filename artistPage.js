@@ -8,11 +8,11 @@ const artistName = document.querySelector(".artist-name");
 const tableBody = document.querySelector(".table-body");
 
 const artist = fetch(`${url}/${id}`, {
-    headers: { "Authorization": "Bearer BQDQv4-6Rsj5pW7QlxMZL81AlTJNmIvfG_v1HNmLC-iV1P8AzqyNSvNADLjabqtTvx8wtKSStuThuenytvs"}
+    headers: { "Authorization": "Bearer BQDG00j9obxfEppFzGRm5ob1VGkRSJD1Pa4tKCqEVtDQHSseSOmdFdJrVjGBEL7AbR6LratP6UJFbB2_m6k" }
 }).then(art => art.json());
 
 const topTracks = fetch(`${url}/${id}/top-tracks?market=us`, {
-    headers: { "Authorization": "Bearer BQDQv4-6Rsj5pW7QlxMZL81AlTJNmIvfG_v1HNmLC-iV1P8AzqyNSvNADLjabqtTvx8wtKSStuThuenytvs" }
+    headers: { "Authorization": "Bearer BQDG00j9obxfEppFzGRm5ob1VGkRSJD1Pa4tKCqEVtDQHSseSOmdFdJrVjGBEL7AbR6LratP6UJFbB2_m6k" }
 }).then(topTraks => topTraks.json());
 
 artist.then(art => {
@@ -39,7 +39,7 @@ topTracks.then(topTracks => {
 
         let tr = document.createElement('tr');
         let img = document.createElement('img');
-        let audio = document.createElement('audio');
+        /*let audio = document.createElement('audio');*/
         let p = document.createElement('p');
 
         let iFrame = document.createElement('iframe');

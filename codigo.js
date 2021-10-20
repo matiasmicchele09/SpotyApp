@@ -1,5 +1,5 @@
 const newRealeses = fetch('https://api.spotify.com/v1/browse/new-releases?offset=0&limit=20', {
-    headers: { "Authorization": "Bearer BQDQv4-6Rsj5pW7QlxMZL81AlTJNmIvfG_v1HNmLC-iV1P8AzqyNSvNADLjabqtTvx8wtKSStuThuenytvs" }
+    headers: { "Authorization": "Bearer BQDG00j9obxfEppFzGRm5ob1VGkRSJD1Pa4tKCqEVtDQHSseSOmdFdJrVjGBEL7AbR6LratP6UJFbB2_m6k" }
 }).then(res => res.json());
 
 /*const artist = fetch('https://api.spotify.com/v1/artists/');*/
@@ -11,8 +11,10 @@ var pos;
 /*newRealeses.then(res => res.json())*/
 newRealeses.then(res => {
         /*console.log(res.albums.items);*/
+        console.log(res);
 
         res.albums.items.forEach(data => {
+            console.log(data);
 
             let divCard = document.createElement('div');
             divCard.classList.add("card");
@@ -41,6 +43,7 @@ newRealeses.then(res => {
             divCard.addEventListener("click", () => {
                 pos = divCard.getAttribute("id");
                 console.log(pos);
+                console.log(res.albums.items.artists);
 
                 /*newRealeses.then(res => {
 
@@ -72,6 +75,5 @@ newRealeses.then(res => {
     });
 
 search.addEventListener("click", () => {
-    /*console.log("SEARCH");*/
     window.location.href = './search.html';
 });

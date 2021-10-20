@@ -10,6 +10,10 @@ body {
     cursor: pointer;
 }
 
+.card {
+    cursor: pointer;
+}
+
 #input-artista {
     margin: 50px;
     height: 35px;
