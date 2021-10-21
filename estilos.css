@@ -5,7 +5,12 @@ body {
 }
 
 .contenedor {
-    background-color: #000000;
+    /* background-color: #000000; */
+    flex-direction: column-reverse;
+}
+
+.contenedor .loading {
+    text-align: center;
 }
 
 div .alert {

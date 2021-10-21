@@ -1,79 +1,113 @@
 const newRealeses = fetch('https://api.spotify.com/v1/browse/new-releases?offset=0&limit=20', {
-    headers: { "Authorization": "Bearer BQDG00j9obxfEppFzGRm5ob1VGkRSJD1Pa4tKCqEVtDQHSseSOmdFdJrVjGBEL7AbR6LratP6UJFbB2_m6k" }
+    headers: { "Authorization": "Bearer BQA6PfSB6mz7shbRVjOCisQbsl2J8zoyazffjmoJuzV70V1rOV0OE88Uo30ChiuQcgyTB9sJrRm_hv2m5GA" }
 }).then(res => res.json());
 
 /*const artist = fetch('https://api.spotify.com/v1/artists/');*/
+const home = document.querySelector(".home");
 const search = document.querySelector(".search");
 const cardColum = document.querySelector(".card-columns");
 const contenedor = document.querySelector(".contenedor");
 var i = 0;
 var pos;
-/*newRealeses.then(res => res.json())*/
-newRealeses.then(res => {
-        /*console.log(res.albums.items);*/
-        console.log(res);
+var loading = true;
 
-        res.albums.items.forEach(data => {
-            console.log(data);
+if (loading == true) {
 
-            let divCard = document.createElement('div');
-            divCard.classList.add("card");
-            divCard.setAttribute("id", i);
-            let img = document.createElement('img');
-            img.classList.add("card-img-top");
-            let divBody = document.createElement('div');
-            let h5 = document.createElement('h5');
-            h5.classList.add("card-title");
+    let divRow = document.createElement('div');
+    divRow.classList.add("row");
+    divRow.classList.add("m-5");
+    divRow.classList.add("animated");
+    divRow.classList.add("fadeIn");
+    let divCol = document.createElement('div');
+    divCol.classList.add("col");
+    divCol.classList.add("loading");
+    let i = document.createElement('i');
+    i.classList.add("fa");
+    i.classList.add("fa-sync");
+    i.classList.add("fa-spin");
+    i.classList.add("fa-5x");
+
+    divCol.appendChild(i);
+    divRow.appendChild(divCol);
+
+    contenedor.appendChild(divRow);
+
+    newRealeses.then(res => {
+
+            console.log(res);
+            loading = false;
+            if (loading == false) {
+
+                contenedor.removeChild(divRow);
+
+                res.albums.items.forEach(data => {
+
+                    let divCard = document.createElement('div');
+                    divCard.classList.add("card");
+                    divCard.setAttribute("id", i);
+                    let img = document.createElement('img');
+                    img.classList.add("card-img-top");
+                    let divBody = document.createElement('div');
+                    let h5 = document.createElement('h5');
+                    h5.classList.add("card-title");
+                    let p = document.createElement('p');
+                    p.classList.add("card-text");
+
+                    h5.innerHTML = `${data.name}`;
+                    img.src = `${data.images[0].url}`;
+                    divCard.appendChild(img);
+                    divBody.appendChild(h5);
+
+                    data.artists.forEach(arts => {
+                        p.innerHTML += `<span class="badge bg-primary">${arts.name}</span> `;
+                        divBody.appendChild(p);
+                    });
+
+                    divCard.appendChild(divBody);
+                    cardColum.appendChild(divCard);
+
+                    divCard.addEventListener("click", () => {
+                        pos = divCard.getAttribute("id");
+                        console.log(pos);
+                        console.log(res.albums.items.artists);
+
+                        /*newRealeses.then(res => {
+
+                            console.log(res.albums.items[pos].artists[0].name)
+                            console.log(res.albums.items[pos]);
+                        });*/
+
+                        window.location.href = `./artistPage.html?id=${res.albums.items[pos].artists[0].id}`;
+                    });
+
+                    i = i + 1;
+                });
+            }
+
+
+        })
+        .catch(err => {
+            console.log(err);
+
+            let div = document.createElement('div');
+            div.classList.add("alert", "alert-danger", "animated", "fadeIn");
+
+            let h3 = document.createElement('h3');
             let p = document.createElement('p');
-            p.classList.add("card-text");
 
-            h5.innerHTML = `${data.name}`;
-            img.src = `${data.images[0].url}`;
-            divCard.appendChild(img);
-            divBody.appendChild(h5);
+            h3.innerHTML = "Error!";
+            p.innerHTML = "The access token expired";
+            div.appendChild(h3);
+            div.appendChild(p);
 
-            data.artists.forEach(arts => {
-                p.innerHTML += `<span class="badge bg-primary">${arts.name}</span> `;
-                divBody.appendChild(p);
-            });
-
-            divCard.appendChild(divBody);
-            cardColum.appendChild(divCard);
-
-            divCard.addEventListener("click", () => {
-                pos = divCard.getAttribute("id");
-                console.log(pos);
-                console.log(res.albums.items.artists);
-
-                /*newRealeses.then(res => {
-
-                    console.log(res.albums.items[pos].artists[0].name)
-                    console.log(res.albums.items[pos]);
-                });*/
-
-                window.location.href = `./artistPage.html?id=${res.albums.items[pos].artists[0].id}`;
-            });
-
-            i = i + 1;
+            contenedor.appendChild(div);
         });
-    })
-    .catch(err => {
-        console.log(err);
-
-        let div = document.createElement('div');
-        div.classList.add("alert", "alert-danger", "animated", "fadeIn");
-
-        let h3 = document.createElement('h3');
-        let p = document.createElement('p');
-
-        h3.innerHTML = "Error!";
-        p.innerHTML = "The access token expired";
-        div.appendChild(h3);
-        div.appendChild(p);
-
-        contenedor.appendChild(div);
-    });
+};
 
 search.addEventListener("click", () => {
     window.location.href = './search.html';
+});
+
+home.addEventListener("click", () => {
+    window.location.href = './index.html';
 });

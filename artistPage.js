@@ -8,11 +8,11 @@ const artistName = document.querySelector(".artist-name");
 const tableBody = document.querySelector(".table-body");
 
 const artist = fetch(`${url}/${id}`, {
-    headers: { "Authorization": "Bearer BQDG00j9obxfEppFzGRm5ob1VGkRSJD1Pa4tKCqEVtDQHSseSOmdFdJrVjGBEL7AbR6LratP6UJFbB2_m6k" }
+    headers: { "Authorization": "Bearer BQA6PfSB6mz7shbRVjOCisQbsl2J8zoyazffjmoJuzV70V1rOV0OE88Uo30ChiuQcgyTB9sJrRm_hv2m5GA" }
 }).then(art => art.json());
 
 const topTracks = fetch(`${url}/${id}/top-tracks?market=us`, {
-    headers: { "Authorization": "Bearer BQDG00j9obxfEppFzGRm5ob1VGkRSJD1Pa4tKCqEVtDQHSseSOmdFdJrVjGBEL7AbR6LratP6UJFbB2_m6k" }
+    headers: { "Authorization": "Bearer BQA6PfSB6mz7shbRVjOCisQbsl2J8zoyazffjmoJuzV70V1rOV0OE88Uo30ChiuQcgyTB9sJrRm_hv2m5GA" }
 }).then(topTraks => topTraks.json());
 
 artist.then(art => {
@@ -98,6 +98,6 @@ topTracks.then(topTracks => {
 });
 
 btn.addEventListener("click", () => {
-    console.log("HOME");
+    /*console.log("HOME");*/
     window.location.href = './index.html';
 });

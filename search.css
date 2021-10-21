@@ -2,6 +2,16 @@ body {
     background-color: #000000;
 }
 
+.contenedor {
+    /*color: #FFFFFF;*/
+    flex-direction: column-reverse;
+}
+
+.contenedor .loading {
+    text-align: center;
+    color: #FFFFFF;
+}
+
 .search {
     cursor: pointer;
 }
