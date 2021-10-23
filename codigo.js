@@ -1,5 +1,5 @@
 const newRealeses = fetch('https://api.spotify.com/v1/browse/new-releases?offset=0&limit=20', {
-    headers: { "Authorization": "Bearer BQA6PfSB6mz7shbRVjOCisQbsl2J8zoyazffjmoJuzV70V1rOV0OE88Uo30ChiuQcgyTB9sJrRm_hv2m5GA" }
+    headers: { "Authorization": "Bearer BQAvM5VHhXvrXs4kJ_Vtcz9DdGS_BZOlznb87-MuZwRVggr6MieUcpU1vHrGoJ1e_e_HBrNZm2caeB1aLkY" }
 }).then(res => res.json());
 
 /*const artist = fetch('https://api.spotify.com/v1/artists/');*/
@@ -7,7 +7,7 @@ const home = document.querySelector(".home");
 const search = document.querySelector(".search");
 const cardColum = document.querySelector(".card-columns");
 const contenedor = document.querySelector(".contenedor");
-var i = 0;
+var x = 0;
 var pos;
 var loading = true;
 
@@ -44,7 +44,7 @@ if (loading == true) {
 
                     let divCard = document.createElement('div');
                     divCard.classList.add("card");
-                    divCard.setAttribute("id", i);
+                    divCard.setAttribute("id", x);
                     let img = document.createElement('img');
                     img.classList.add("card-img-top");
                     let divBody = document.createElement('div');
@@ -66,10 +66,14 @@ if (loading == true) {
                     divCard.appendChild(divBody);
                     cardColum.appendChild(divCard);
 
+                    /*console.log(x);*/
+
+
                     divCard.addEventListener("click", () => {
                         pos = divCard.getAttribute("id");
-                        console.log(pos);
-                        console.log(res.albums.items.artists);
+                        /*console.log(pos);
+
+                        console.log(res.albums.items[pos].artists[0].id);*/
 
                         /*newRealeses.then(res => {
 
@@ -80,7 +84,7 @@ if (loading == true) {
                         window.location.href = `./artistPage.html?id=${res.albums.items[pos].artists[0].id}`;
                     });
 
-                    i = i + 1;
+                    x++;
                 });
             }
 
